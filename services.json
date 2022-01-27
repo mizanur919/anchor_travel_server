@@ -1,0 +1,20 @@
+[
+    {
+        "title": "3 Days 2 Nights in Hoi An Old Town – VietNam Tour",
+        "description": "Varius massa maecenas et id dictumst mattis. Donec fringilla ac parturient posuere id phasellus erat elementum nullam lacus cursus rhoncus parturient vitae praesent quisque nascetur molestie quis",
+        "price": 200,
+        "img": "",
+        "tourType": "Specific Tour",
+        "duration": "3 days",
+        "groupSize": "10 People"
+    },
+    {
+        "title": "Bali Full-Day Traditional Village Sightseeing Trip",
+        "description": "This sightseeing tour is for travelers looking to make the most of their time in Bali: This full-day excursion lets you tick off the majority of Bali’s highlights in just one day, making it the perfect choice for visitors with limited time. Travel with ease between Kintamani Volcano, Sacred Monkey Forest Sanctuary, traditional villages, and many more sites, and enjoy the convenience of hotel pickup and drop-off as well as a buffet lunch.",
+        "price": 300,
+        "img": "",
+        "tourType": "Premium Tour",
+        "duration": "4 days",
+        "groupSize": "8 People"
+    }
+]
