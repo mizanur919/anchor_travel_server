@@ -39,6 +39,14 @@ async function run() {
       res.send(reviews);
     });
 
+    // Load data according to UID
+    // app.get("/reviews/:uid", async (req, res) => {
+    //   const uid = req.params.uid;
+    //   const query = { uid: uid };
+    //   const result = await reviewsCollection.find(query).toArray();
+    //   res.json(result);
+    // });
+
     // POST API
     app.post("/reviews", async (req, res) => {
       const newReview = req.body;
