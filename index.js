@@ -27,6 +27,7 @@ async function run() {
     // Collections
     const reviewsCollection = database.collection("reviews");
     const blogCollection = database.collection("blogs");
+    const usersCollection = database.collection("users");
 
     ///////////////////////////
     //// Review Collection ////
@@ -40,12 +41,14 @@ async function run() {
     });
 
     // Load data according to UID
-    // app.get("/reviews/:uid", async (req, res) => {
-    //   const uid = req.params.uid;
-    //   const query = { uid: uid };
-    //   const result = await reviewsCollection.find(query).toArray();
-    //   res.json(result);
-    // });
+    app.get("/userWiseReviews/:uid", async (req, res) => {
+      const uid = req.params.uid;
+      const query = { uid: uid };
+      console.log(query);
+      const result = reviewsCollection.find(query);
+      const reviews = await result.toArray();
+      res.json(reviews);
+    });
 
     // POST API
     app.post("/reviews", async (req, res) => {
@@ -103,6 +106,36 @@ async function run() {
       const query = { _id: ObjectId(id) };
       const blog = await blogCollection.findOne(query);
       res.json(blog);
+    });
+
+    //////////////////////
+    ////// Users /////////
+    //////////////////////
+    app.post("/users", async (req, res) => {
+      const user = req.body;
+      const result = await usersCollection.insertOne(user);
+      res.json(result);
+    });
+
+    app.put("/users", async (req, res) => {
+      const user = req.body;
+      const filter = { email: user.email };
+      const options = { upsert: true };
+      const updateDoc = { $set: user };
+      const result = await usersCollection.updateOne(
+        filter,
+        updateDoc,
+        options
+      );
+      res.json(result);
+    });
+
+    app.put("/users/admin", async (req, res) => {
+      const user = req.body;
+      const filter = { email: user.email };
+      const updateDoc = { $set: { role: "admin" } };
+      const result = await usersCollection.updateOne(filter, updateDoc);
+      res.json(result);
     });
 
     ///////////////////////
